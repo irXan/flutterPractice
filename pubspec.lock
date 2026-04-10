@@ -87,7 +87,11 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_lints:
+<<<<<<< HEAD
     dependency: "direct main"
+=======
+    dependency: "direct dev"
+>>>>>>> 850a17d3847e691996bb8ef7d18deec86266e7ae
     description:
       name: flutter_lints
       sha256: "5398f14efa795ffb7a33e9b6a08798b26a180edac4ad7db3f231e40f82ce11e1"
@@ -100,13 +104,18 @@ packages:
     source: sdk
     version: "0.0.0"
   google_fonts:
+<<<<<<< HEAD
     dependency: "direct main"
+=======
+    dependency: "direct dev"
+>>>>>>> 850a17d3847e691996bb8ef7d18deec86266e7ae
     description:
       name: google_fonts
       sha256: "517b20870220c48752eafa0ba1a797a092fb22df0d89535fd9991e86ee2cdd9c"
       url: "https://pub.dev"
     source: hosted
     version: "6.3.2"
+<<<<<<< HEAD
   hive:
     dependency: "direct main"
     description:
@@ -123,6 +132,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+=======
+>>>>>>> 850a17d3847e691996bb8ef7d18deec86266e7ae
   http:
     dependency: transitive
     description:
@@ -172,7 +183,11 @@ packages:
     source: hosted
     version: "5.1.1"
   lottie:
+<<<<<<< HEAD
     dependency: "direct main"
+=======
+    dependency: "direct dev"
+>>>>>>> 850a17d3847e691996bb8ef7d18deec86266e7ae
     description:
       name: lottie
       sha256: c5fa04a80a620066c15cf19cc44773e19e9b38e989ff23ea32e5903ef1015950
