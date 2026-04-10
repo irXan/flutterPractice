@@ -94,7 +94,7 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: ElevatedButton(
+                    child: ElevatedButton.icon(
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -112,8 +112,6 @@ class ProfileScreen extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
                         elevation: 2,
                         padding: const EdgeInsets.all(14),
                         shape: RoundedRectangleBorder(
@@ -137,20 +135,21 @@ class ProfileScreen extends StatelessWidget {
                           },
                         ),
                       ),
-                      child: Text(
+                      icon: Icon(Icons.message),
+                      label: Text(
                         "F o l l o w",
                         style: GoogleFonts.orbitron(
                           fontWeight: FontWeight.w600,
                           fontSize: 12,
                         ),
-                      ),
+                      ), 
                     ),
                   ),
 
                   const SizedBox(width: 10),
 
                   Expanded(
-                    child: OutlinedButton(
+                    child: OutlinedButton.icon(
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -168,8 +167,6 @@ class ProfileScreen extends StatelessWidget {
                         );
                       },
                       style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.white,           // Default: White
-                        foregroundColor: Colors.black,
                         side: const BorderSide(color: Colors.grey),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -193,7 +190,8 @@ class ProfileScreen extends StatelessWidget {
                           },
                         ),
                       ),
-                      child: Text(
+                      icon: Icon(Icons.person_add),
+                      label: Text(
                         "M e s s a g e",
                         style: GoogleFonts.orbitron(
                           fontWeight: FontWeight.w600,

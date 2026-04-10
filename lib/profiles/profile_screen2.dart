@@ -10,36 +10,35 @@ class ProfileScreenLevel2 extends StatelessWidget {
 
       body: Column(
         children: [
-
-          /// 🔥 STACK (Advanced)
           Stack(
             clipBehavior: Clip.none,
             children: [
-
-              /// Gradient Banner
               Container(
                 height: 220,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.deepOrange, Colors.orange],
+                    colors: [
+                      const Color.fromARGB(255, 94, 82, 255),
+                      const Color.fromARGB(255, 248, 221, 221),
+                      Colors.pinkAccent,
+                    ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                 ),
               ),
 
-              /// Edit Button
               Positioned(
                 top: 40,
                 right: 20,
                 child: CircleAvatar(
+                  radius: 15,
                   backgroundColor: Colors.white,
-                  child: Icon(Icons.edit, color: Colors.black),
+                  child: Icon(Icons.edit, color: Colors.black, size: 20),
                 ),
               ),
 
-              /// Profile Image with border
               Positioned(
                 bottom: -60,
                 left: MediaQuery.of(context).size.width / 2 - 60,
@@ -48,8 +47,7 @@ class ProfileScreenLevel2 extends StatelessWidget {
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
                     radius: 58,
-                    backgroundImage:
-                    NetworkImage("https://i.pravatar.cc/300"),
+                    backgroundImage: AssetImage('assets/images/DP.png'),
                   ),
                 ),
               ),
@@ -57,27 +55,18 @@ class ProfileScreenLevel2 extends StatelessWidget {
           ),
 
           const SizedBox(height: 70),
-
-          /// Name
           Text(
             "Irzan Ahmad",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
 
           const SizedBox(height: 5),
-
-          /// Bio
           Text(
             "Flutter Developer | AI & Blockchain",
             style: TextStyle(color: Colors.grey),
           ),
 
           const SizedBox(height: 20),
-
-          /// 🔥 Stats with Icons
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -88,8 +77,6 @@ class ProfileScreenLevel2 extends StatelessWidget {
           ),
 
           const SizedBox(height: 20),
-
-          /// 🔥 Buttons
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
@@ -99,8 +86,23 @@ class ProfileScreenLevel2 extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(Icons.person_add),
                     label: Text("Follow"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepOrange,
+                    style: ElevatedButton.styleFrom().copyWith(
+                      backgroundColor: WidgetStateProperty.resolveWith<Color?>((
+                        states,
+                      ) {
+                        if (states.contains(WidgetState.hovered)) {
+                          return Colors.black;
+                        }
+                        return Colors.amber;
+                      }),
+                      foregroundColor: WidgetStateProperty.resolveWith<Color?>((
+                        states,
+                      ) {
+                        if (states.contains(WidgetState.hovered)) {
+                          return Colors.amber;
+                        }
+                        return Colors.black;
+                      }),
                     ),
                   ),
                 ),
@@ -110,6 +112,24 @@ class ProfileScreenLevel2 extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(Icons.message),
                     label: Text("Message"),
+                    style: ElevatedButton.styleFrom().copyWith(
+                      backgroundColor: WidgetStateProperty.resolveWith<Color?>((
+                        states,
+                      ) {
+                        if (states.contains(WidgetState.hovered)) {
+                          return Colors.blueAccent;
+                        }
+                          return Colors.white;
+                      }),
+                      foregroundColor: WidgetStateProperty.resolveWith<Color?>((
+                        states,
+                      ) {
+                        if (states.contains(WidgetState.hovered)) {
+                          return Colors.white;
+                        }
+                        return Colors.blueAccent;
+                      }),
+                    ),
                   ),
                 ),
               ],
@@ -117,20 +137,16 @@ class ProfileScreenLevel2 extends StatelessWidget {
           ),
 
           const SizedBox(height: 15),
-
-          /// 🔥 Tabs (UI only)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Icon(Icons.grid_on),
-              Icon(Icons.video_collection),
-              Icon(Icons.bookmark),
+              Icon(Icons.grid_on, color: Colors.pinkAccent),
+              Icon(Icons.video_collection, color: Colors.pinkAccent),
+              Icon(Icons.bookmark, color: Colors.pinkAccent),
             ],
           ),
 
           const SizedBox(height: 10),
-
-          /// 🔥 Expanded Content
           Expanded(
             child: GridView.builder(
               padding: EdgeInsets.all(10),
@@ -143,7 +159,7 @@ class ProfileScreenLevel2 extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: Colors.orange[200],
+                    color: const Color.fromARGB(255, 0, 0, 0),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 );

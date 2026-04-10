@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:myapp_01/profile_screen.dart';
-import 'package:myapp_01/profile_screen2.dart';
-import 'package:myapp_01/signin_screen.dart';
-import 'package:myapp_01/signup_screen.dart';
-
-void main() {
+import 'package:hive_flutter/adapters.dart';
+import 'package:myapp_01/profiles/profile_screen.dart';
+import 'package:myapp_01/profiles/profile_screen2.dart';
+import 'package:myapp_01/auth/signin_screen.dart';
+import 'package:myapp_01/auth/signup_screen.dart';
+import 'package:hive/hive.dart';
+import 'package:myapp_01/todo/todo.dart';
+import 'package:myapp_01/todo/todo_details.dart';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('profile');
   runApp(const MyApp());
 }
 
@@ -20,7 +26,9 @@ class MyApp extends StatelessWidget {
         '/': (context) => SignInScreen(),
         '/signup': (context) => SignUpScreen(),
         '/profile': (context) => ProfileScreen(),
-        '/profile2': (context) => ProfileScreenLevel2()
+        '/profile2': (context) => ProfileScreenLevel2(),
+        '/todo': (context) => Todo(),
+        '/to': (context) => TodoDetails(name: 'IRZAN', todos: [])
       },
     );
   }
