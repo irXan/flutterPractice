@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640456292588",
+    "project_id": "pratcice-6330b",
+    "storage_bucket": "pratcice-6330b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640456292588:android:c9a208bc70046063eb0dc9",
+        "android_client_info": {
+          "package_name": "com.example.myapp_01"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk0mS85kQhI4YHuwapQNroF48nFYXPZeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
