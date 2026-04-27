@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:myapp_01/api/controller.dart';
 import 'package:myapp_01/api/model.dart';
 
@@ -18,9 +19,55 @@ class _MyViewState extends State<MyView> {
   TextEditingController phone = TextEditingController();
   TextEditingController role = TextEditingController();
   TextEditingController avatar = TextEditingController();
+  TextEditingController id = TextEditingController();
+
+  bool isedit = false;
 
   @override
   Widget build(BuildContext context) {
+    Future<void> add() async {
+      final data = Model(
+        avatar: avatar.text,
+        name: name.text,
+        details: details.text,
+        id: '',
+        phone: phone.text,
+        role: role.text,
+      );
+
+      await contr.addData(data);
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('data added')));
+      setState(() {});
+    }
+
+    Future<void> edit() async {
+      final data = Model(
+        avatar: avatar.text,
+        name: name.text,
+        details: details.text,
+        id: id.text,
+        phone: phone.text,
+        role: role.text,
+      );
+
+      await contr.updateData(data);
+
+      isedit = false;
+      name.clear();
+      avatar.clear();
+      details.clear();
+      role.clear();
+      phone.clear();
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('data added')));
+      setState(() {});
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -48,31 +95,25 @@ class _MyViewState extends State<MyView> {
             ),
             SizedBox(height: 10),
 
-            ElevatedButton(
-              onPressed: () async {
-                final data = Model(
-                  avatar: avatar.text,
-                  name: name.text,
-                  details: details.text,
-                  id: '',
-                  phone: phone.text,
-                  role: role.text,
-                );
-
-                await contr.getData();
-
-                ScaffoldMessenger.of(
-                  context,
-                ).showSnackBar(SnackBar(content: Text('data added')));
-              },
-              child: Text('Save'),
-            ),
+            isedit == false
+                ? ElevatedButton(
+                    onPressed: () async {
+                      add();
+                    },
+                    child: Text('Save'),
+                  )
+                : ElevatedButton(
+                    onPressed: () async {
+                      edit();
+                      
+                    },
+                    child: Text('Update'),
+                  ),
 
             Expanded(
               child: FutureBuilder(
                 future: contr.getData(),
                 builder: (context, snapshot) {
-                  
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
                   }
@@ -89,11 +130,30 @@ class _MyViewState extends State<MyView> {
                     itemCount: users.length,
                     itemBuilder: (context, index) {
                       final user = users[index];
-                      return ListTile(
-                        title: Text(user.name),
-                        subtitle: Text(user.details),
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(user.avatar),
+                      return InkWell(
+                        onLongPress: () => {contr.delete(user.id)},
+
+                        child: ListTile(
+                          title: Text(user.name),
+                          subtitle: Text(user.details),
+                          leading: CircleAvatar(
+                            backgroundImage: NetworkImage(user.avatar),
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {
+                              isedit = true;
+
+                              id.text = user.id;
+                              name.text = user.name;
+                              details.text = user.details;
+                              avatar.text = user.avatar;
+                              phone.text = user.phone;
+                              role.text = user.role;
+
+                              setState(() {});
+                            },
+                            icon: Icon(Icons.edit),
+                          ),
                         ),
                       );
                     },

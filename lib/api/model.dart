@@ -19,7 +19,7 @@ class Model {
     return Model(
       id: data["id"]?.toString() ?? '',
       name: data["name"]?.toString() ?? '',
-      avatar: data["avatar"]?.toString() ?? '',
+      avatar: data["avatar"]?.toString() ?? 'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/67.jpg',
       details: data["details"]?.toString() ?? '',
       phone: data["phone"]?.toString() ?? '',
       role: data["role"]?.toString() ?? '',
