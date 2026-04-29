@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:myapp_01/api/controller.dart';
 import 'package:myapp_01/api/model.dart';
 import 'package:myapp_01/provider/theme_provider.dart';

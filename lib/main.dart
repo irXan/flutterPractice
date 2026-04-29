@@ -10,9 +10,12 @@ import 'package:myapp_01/api/view.dart';
 // import 'package:myapp_01/provider/tasbihView.dart';
 
 import 'package:myapp_01/provider/tasbih.dart';
+import 'package:myapp_01/provider/tasbihView.dart';
 import 'package:myapp_01/provider/theme_provider.dart';
-import 'package:myapp_01/todo/todo.dart';
-import 'package:myapp_01/todo/todo_details.dart';
+
+// import 'package:myapp_01/todo/todo.dart';
+// import 'package:myapp_01/todo/todo_details.dart';
+
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
@@ -59,7 +62,7 @@ class MyApp extends StatelessWidget {
       //   '/to': (context) => TodoDetails(name: 'IRZAN', todos: []),
       // },
       
-      home: MyView(),
+      home: TasbihView(),
     );
   }
 }
