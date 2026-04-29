@@ -18,6 +18,7 @@ class Controller {
       print('Data not fatched');
       throw Exception('Data not Fatched');
     }
+    
     getData();
   }
 
@@ -48,6 +49,25 @@ class Controller {
     } else {
       throw Exception('Failed to load data');
     }
+
+    getData();
+  }
+
+  Future<void> patchData(String id, String role) async {
+    final response = await http.put(
+      Uri.parse('$url/$id'),
+      headers: {'content-Type': 'application/json'},
+      body: jsonEncode({'role':role}),
+    );
+
+    if (response.statusCode == 200) {
+      print('Data Updated');
+    } else if (response.statusCode == 404) {
+      throw Exception('Data not found');
+    } else {
+      throw Exception('Failed to load data');
+    }
+
     getData();
   }
 
@@ -59,6 +79,7 @@ class Controller {
     } else {
       throw Exception('Failed to Delete data');
     }
+    
     getData();
   }
 }
